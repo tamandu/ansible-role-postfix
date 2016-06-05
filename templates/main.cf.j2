@@ -1,0 +1,19 @@
+# general
+myhostname = {{ postfix_myhostname }}
+mydomain = {{ postfix_mydomain }}
+myorigin = {{ postfix_myorigin }}
+inet_interfaces = {{ postfix_inet_interfaces }}
+inet_protocols = {{ postfix_inet_protocols }}
+mydestination = {{ postfix_mydestination }}
+mynetworks = {{ postfix_mynetworks }}
+alias_maps = {{ postfix_alias_maps }}
+alias_database = {{ postfix_alias_database }}
+recipient_delimiter = {{ postfix_recipient_delimiter }}
+mailbox_size_limit = {{ postfix_mailbox_size_limit }}
+
+# option
+{% if postfix_option is defined %}
+{% for param in postfix.option %}
+{{ param.key }} = {{ param.value }}
+{% endfor %}
+{% endif %}

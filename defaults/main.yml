@@ -1,0 +1,12 @@
+---
+postfix_myhostname: "{{ ansible_hostname }}"
+postfix_mydomain: "{{ ('.').join(ansible_fqdn.split('.')[1:]) }}"
+postfix_myorigin: $mydomain
+postfix_inet_interfaces: localhost
+postfix_inet_protocols: ipv4
+postfix_mydestination: '$myhostname, localhost.$mydomain, localhost'
+postfix_mynetworks: 127.0.0.0/8
+postfix_alias_maps: hash:/etc/aliases
+postfix_alias_database: hash:/etc/aliases
+postfix_recipient_delimiter: +
+postfix_mailbox_size_limit: 51200000
